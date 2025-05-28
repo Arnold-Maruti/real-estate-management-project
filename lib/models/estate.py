@@ -27,7 +27,14 @@ class Estate:
         sql="""SELECT * FROM houses WHERE estate_id=?"""
         rows=CURSOR.execute(sql,(id,))
         return [row[2] for row in rows if not row[2]==None]
+    
+    @classmethod
+    def show_my_estates(cls):
+        sql="""SELECT * FROM estates """
+        rows=CURSOR.execute(sql)
+        return [row[1] for row in rows]
+
 
 # Estate.add_estate("Lion park")
-print(Estate.clients_in_estate(1))
+print(Estate.show_my_estates())
 

@@ -20,11 +20,18 @@ class House:
 
     @classmethod
     def see_available_houses(cls):
-        sql="""SELECT * FROM houses WHERE owner=none"""
+        sql="""SELECT * FROM houses WHERE owner IS NULL"""
         rows=CURSOR.execute(sql)
         return [row[1] for row in rows]
+    
+    @classmethod
+    def demolish_house(cls,id):
+        sql="""DELETE FROM houses WHERE id=?"""
+        CURSOR.execute(sql,(id,))
+        CONN.commit()
+
     
 
 
 # House.add_house("Ngong lane",1)
-print()
+print(House.see_available_houses())
