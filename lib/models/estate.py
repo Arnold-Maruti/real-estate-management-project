@@ -1,9 +1,11 @@
 from  __init__ import CONN,CURSOR
 
 class Estate:
+    all={}
     def __init__(self,name,id=None):
        self.id=id
        self.name=name
+       Estate.all.update({self.id:self.name})
 
     def save(self):
         sql="""INSERT INTO estates(name) VALUES(?)"""

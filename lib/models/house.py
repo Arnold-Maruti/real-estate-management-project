@@ -30,6 +30,13 @@ class House:
         CURSOR.execute(sql,(id,))
         CONN.commit()
 
+    @classmethod
+    def buy_house(cls,name,location):
+        sql="""UPDATE houses SET owner=? WHERE location=?"""
+        CURSOR.execute(sql,(name,location))
+        CONN.commit()
+
+
     
 
 
