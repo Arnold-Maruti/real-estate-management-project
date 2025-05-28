@@ -5,13 +5,19 @@ class Estate:
     def __init__(self,name,id=None):
        self.id=id
        self.name=name
-       Estate.all.update({self.id:self.name})
+
 
     def save(self):
         sql="""INSERT INTO estates(name) VALUES(?)"""
         CURSOR.execute(sql,(self.name,))
         CONN.commit()
         self.id=CURSOR.lastrowid
+
+        type(self).all[self.id]=self
+
+
+    def __repr__(self):
+        return f"f<Department {self.id}: {self.name}>"
 
     @classmethod
     def add_estate(cls,name):
@@ -35,6 +41,17 @@ class Estate:
         sql="""SELECT * FROM estates """
         rows=CURSOR.execute(sql)
         return [row[1] for row in rows]
+    @classmethod
+    def instance(cls,row):
+        estate=cls.all.get(row[0])
+        if estate:
+            estate.name=row[1]
+        else:
+            estate=cls(row[1])
+            estate.id=row[0]
+            cls.all[estate.id]=estate
+        return estate
+
 
 
 # Estate.add_estate("Lion park")

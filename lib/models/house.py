@@ -41,4 +41,4 @@ class House:
 
 
 # House.add_house("Ngong lane",1)
-print(House.see_available_houses())
+# print(House.see_available_houses())
