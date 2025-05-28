@@ -1,4 +1,4 @@
-from __init__ import CONN,CURSOR
+from models.__init__ import CONN,CURSOR
 
 class House:
     def __init__(self,location,estate_id,owner=None,id=None):
@@ -42,3 +42,4 @@ class House:
 
 # House.add_house("Ngong lane",1)
 # print(House.see_available_houses())
+House.demolish_house(2)

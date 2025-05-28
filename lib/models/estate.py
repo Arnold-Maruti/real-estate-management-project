@@ -1,4 +1,4 @@
-from  __init__ import CONN,CURSOR
+from  models.__init__ import CONN,CURSOR
 
 class Estate:
     all={}
@@ -17,7 +17,7 @@ class Estate:
 
 
     def __repr__(self):
-        return f"f<Department {self.id}: {self.name}>"
+        return f"<Estate {self.id}: {self.name}>"
 
     @classmethod
     def add_estate(cls,name):
@@ -33,14 +33,14 @@ class Estate:
     @classmethod
     def clients_in_estate(cls,id):
         sql="""SELECT * FROM houses WHERE estate_id=?"""
-        rows=CURSOR.execute(sql,(id,))
+        rows=CURSOR.execute(sql,(id,)).fetchall
         return [row[2] for row in rows if not row[2]==None]
     
     @classmethod
     def show_my_estates(cls):
         sql="""SELECT * FROM estates """
-        rows=CURSOR.execute(sql)
-        return [row[1] for row in rows]
+        rows=CURSOR.execute(sql).fetchall()
+        return [cls.instance(row).name for row in rows]
     @classmethod
     def instance(cls,row):
         estate=cls.all.get(row[0])
@@ -54,6 +54,5 @@ class Estate:
 
 
 
-# Estate.add_estate("Lion park")
-print(Estate.show_my_estates())
+
 
