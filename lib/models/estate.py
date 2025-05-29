@@ -33,8 +33,8 @@ class Estate:
     @classmethod
     def clients_in_estate(cls,id):
         sql="""SELECT * FROM houses WHERE estate_id=?"""
-        rows=CURSOR.execute(sql,(id,)).fetchall
-        return [row[2] for row in rows if not row[2]==None]
+        rows=CURSOR.execute(sql,(id,)).fetchall()
+        return [cls.instance(row).name for row in rows if row[2]is not None]
     
     @classmethod
     def show_my_estates(cls):

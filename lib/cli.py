@@ -32,7 +32,7 @@ def agent():
             estates()
 
         elif choice=="4":
-            print("Enter name of estate ")
+            print("Enter estate id ")
             d=input(">")
             search_for_clients_in_estate(d)
 
