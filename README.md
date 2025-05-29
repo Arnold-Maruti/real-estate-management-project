@@ -33,7 +33,7 @@ A client on the other hand can be able to do the following:
        1)Seeing houses that have no owner in order for them to move in
 
 
-       2)Buyin a house
+       2)Buying a house
 
 
 
