@@ -68,29 +68,30 @@ def client_menu():
         
 
 def client():
-    print("Welcome our prestigious client.Which of the following functions would you like to perform")
-    client_menu()
-    choice=input(">")
-    if choice=="1":
-        print("The following houses have no owners")
-        see_available_houses()
+    while True:
+        print("Welcome our prestigious client.Which of the following functions would you like to perform")
+        client_menu()
+        choice=input(">")
+        if choice=="1":
+            print("The following houses have no owners")
+            see_available_houses()
 
-    elif choice=="2":
-        print("Enter your name")
-        c=input(">")
-        print("Enter location of the house")
-        d=input(">")
-        buy_a_house(c,d)
-        print("House has been bought details for payment will be communicated to you later")
+        elif choice=="2":
+            print("Enter your name")
+            c=input(">")
+            print("Enter location of the house")
+            d=input(">")
+            buy_a_house(c,d)
+            print("House has been bought details for payment will be communicated to you later")
            
-    elif choice=="3":
+        elif choice=="3":
             main_menu()
 
-    elif choice=="4":
+        elif choice=="4":
             print("Thank you for using our system")
             exit()
 
-    else:
+        else:
             print("Invalid choice entered")
 
 def main_menu():
